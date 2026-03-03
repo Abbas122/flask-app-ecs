@@ -1,13 +1,24 @@
 name: CI/CD Pipeline
 
+#on:
+#  push:
+ #   branches:
+  #    - main
+  #  paths:
+  #    - '**.yml'
+  #    - '**.html'
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**.yml'
-      - '**.html'
-
+  workflow_dispatch:
+    inputs:
+      environments:
+        description: this is  mesages to display
+        default: 'dev'
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+          - staging
 jobs:
   Code:
     runs-on: ubuntu-latest
