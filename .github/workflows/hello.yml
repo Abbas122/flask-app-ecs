@@ -12,16 +12,19 @@ jobs:
       - name: Checkout Code
         run: echo "code is been cloned"
   Build:
+    needs: Code
     runs-on: ubuntu-latest
     steps:
       - name: buikd docker container
         run: echo "build successfully" 
   Test:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - name: Test are doing
         run: echo "test has Done"
   Deploye:
+    needs: Test
     runs-on: ubuntu-latest
     steps:
       - name:  Deploye Steps
